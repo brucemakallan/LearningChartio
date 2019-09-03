@@ -21,16 +21,16 @@
     "react-toastify": "^5.3.2",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "tslint": "^5.19.0",
-    "typescript": "^3.6.2"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "serve -s build",
     "start:dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.tsx src/**/*.ts",
+    "lint:fix": "eslint src/**/*.tsx src/**/*.ts --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +48,10 @@
     ]
   },
   "devDependencies": {
-    "typescript-tslint-plugin": "^0.5.4"
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "eslint": "^6.3.0",
+    "eslint-plugin-react": "^7.14.3",
+    "typescript": "^3.6.2"
   }
 }

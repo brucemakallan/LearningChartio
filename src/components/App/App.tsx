@@ -5,31 +5,29 @@ import readGoogleSheet from '../GoogleSheets';
 import ArticlesTable from '../ArticlesTable';
 import Loader from '../Loader';
 import { connect } from 'react-redux';
-import { reduxState } from '../../redux/reducers'
-import { table } from '../../utils/interfaces'
+import { reduxState } from '../../redux/reducers';
+import { table } from '../../utils/interfaces';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: table) => void;
 }
- 
-export interface AppState {
-  
-}
- 
+
+export interface AppState { }
+
 class App extends React.Component<AppProps, AppState> {
-  getArticles = () => {
+  getArticles = (): void => {
     const { getAllArticles } = this.props;
-    const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID || ''
-    const token = process.env.REACT_APP_GOOGLE_TOKEN || ''
+    const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID || '';
+    const token = process.env.REACT_APP_GOOGLE_TOKEN || '';
     const table = {
       startCell: 'A1',
       endCell: 'G27',
-    }
-    getAllArticles(sheetId, token, table)
+    };
+    getAllArticles(sheetId, token, table);
   }
 
 
-  render() { 
+  render() {
     return (
       <div className="App">
         <ToastContainer />
@@ -40,7 +38,7 @@ class App extends React.Component<AppProps, AppState> {
     );
   }
 }
- 
+
 const mapStateToProps = ({ articlesReducer }: reduxState) => ({
   articles: articlesReducer.articles,
 });
