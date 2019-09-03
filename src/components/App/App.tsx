@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
-import readGoogleSheet from '../GoogleSheets'
+import readGoogleSheet from '../GoogleSheets';
+import ArticlesTable from '../ArticlesTable';
 
-const App: React.FC = () => {
+const App: React.SFC = () => {
   const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID || ''
   const token = process.env.REACT_APP_GOOGLE_TOKEN || ''
   const table = {
@@ -14,7 +15,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <ToastContainer />
-      <button type="button" onClick={() => readGoogleSheet(sheetId, token, table)}>Read Google Sheet</button>
+      <button type="button" onClick={() => readGoogleSheet(sheetId, token, table)}>Refresh</button>
+      <ArticlesTable />
     </div>
   );
 }
