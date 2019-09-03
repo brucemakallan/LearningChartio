@@ -34,5 +34,6 @@ module.exports = {
     "no-underscore-dangle": "warn",
     "no-var": "error",
     "camelcase": ["warn", { "properties": "always" }],
+    "no-trailing-spaces": ["error", { "ignoreComments": true }],
   },
 };

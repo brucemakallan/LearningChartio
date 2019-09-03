@@ -3,15 +3,12 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
-export interface ArticlesTableProps {
-  
-}
- 
-export interface ArticlesTableState {
+// export interface ArticlesTableProps {
 
-}
- 
-class ArticlesTable extends React.Component<ArticlesTableProps, ArticlesTableState> {
+// }
+
+
+class ArticlesTable extends React.Component {
   state = {
     columnDefs: [
       { headerName: 'Article', field: 'article', sortable: true, filter: true },
@@ -25,13 +22,13 @@ class ArticlesTable extends React.Component<ArticlesTableProps, ArticlesTableSta
     rowData: [],
   }
 
-  render() { 
+  render(): JSX.Element {
     return (
-      <div 
+      <div
         className="ag-theme-material"
-        style={{ 
-          height: '500px', 
-          width: '600px' }} 
+        style={{
+          height: '500px',
+          width: '600px' }}
       >
         <AgGridReact
           columnDefs={this.state.columnDefs}
@@ -41,5 +38,5 @@ class ArticlesTable extends React.Component<ArticlesTableProps, ArticlesTableSta
     );
   }
 }
- 
+
 export default ArticlesTable;

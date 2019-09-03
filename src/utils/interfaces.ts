@@ -1,8 +1,4 @@
-export interface action {
-  payload: any;
-  type: string;
-}
-export interface table {
+export interface SpreadsheetTable {
   startCell: string;
   endCell: string;
 }
