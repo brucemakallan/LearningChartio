@@ -1,13 +1,9 @@
 import axios from 'axios'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import types, { handleException, showPageLoader } from '../../redux/actions';
+import { table } from '../../utils/interfaces'
 
-interface table {
-  startCell: string,
-  endCell: string,
-}
-
-const readGoogleSheet = (sheetId: string, token: string, table: table) => {
+const readGoogleSheet = (sheetId: string, token: string, table: table) => async (dispatch: any) => {
+  dispatch(showPageLoader(true));
   axios.get(
     `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${table.startCell}:${table.endCell}`,
     {
@@ -16,11 +12,14 @@ const readGoogleSheet = (sheetId: string, token: string, table: table) => {
         'content-type':'application/json',
       }
     }
-  ).then(response => {
-    console.log(response);
+  ).then((response) => {
+    const payload = response.data.values;
+    dispatch({ type: types.FETCH_GOOGLE_SHEET, payload });
+    dispatch(showPageLoader(false));
   })
-  .catch(error => {
-    toast.error(error.response.data.error.message);
+  .catch((error) => {
+    dispatch(showPageLoader(false));
+    handleException(error, dispatch);
   })
 }
 
