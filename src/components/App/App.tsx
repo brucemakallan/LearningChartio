@@ -6,11 +6,12 @@ import ArticlesTable from '../ArticlesTable';
 import Loader from '../Loader';
 import { connect } from 'react-redux';
 import { ReduxState } from '../../redux/reducers';
-import { SpreadsheetTable, GlobalState } from '../../utils/interfaces';
+import { SpreadsheetTable, GlobalState, Articles } from '../../utils/interfaces';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: SpreadsheetTable) => void;
   showLoader: boolean;
+  articles: Articles;
 }
 
 class App extends React.Component<AppProps> {
@@ -27,7 +28,7 @@ class App extends React.Component<AppProps> {
 
 
   render(): JSX.Element {
-    const { showLoader } = this.props;
+    const { showLoader, articles } = this.props;
 
     return (
       <div className="app">
@@ -38,7 +39,7 @@ class App extends React.Component<AppProps> {
             Refresh from Google Sheet
           </button>
         </div>
-        <ArticlesTable />
+        <ArticlesTable articles={articles} />
       </div>
     );
   }
