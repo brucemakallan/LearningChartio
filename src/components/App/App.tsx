@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import { ToastContainer } from 'react-toastify';
 import readGoogleSheet from '../GoogleSheets';
 import ArticlesTable from '../ArticlesTable';
@@ -28,10 +28,14 @@ class App extends React.Component<AppProps> {
 
   render(): JSX.Element {
     return (
-      <div className="App">
+      <div className="app">
         <ToastContainer />
         <Loader />
-        <button type="button" onClick={this.getArticles}>Refresh</button>
+        <div className="refresh-bt">
+          <button type="button" className="btn btn-sm btn-outline-primary" onClick={this.getArticles}>
+            Refresh from Google Sheet
+          </button>
+        </div>
         <ArticlesTable />
       </div>
     );

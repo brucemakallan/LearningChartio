@@ -36,7 +36,7 @@ class ArticlesTable extends React.Component<ArticlesTableProps, {}> {
     }));
 
     return (
-      <div className="ag-theme-material" style={{ height: '90vh', width: '98%' }}>
+      <div className="ag-theme-material" style={{ height: '90vh', width: '100%' }}>
         { rows.length > 0 &&  <AgGridReact columnDefs={columns} rowData={rows} /> }
       </div>
     );
