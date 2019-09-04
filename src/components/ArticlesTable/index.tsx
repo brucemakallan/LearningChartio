@@ -5,6 +5,7 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { ReduxState } from '../../redux/reducers';
 import { ArticleState } from '../../redux/reducers/articlesReducer';
 import { connect } from 'react-redux';
+import './ArticlesTable.scss';
 
 
 export interface ArticlesTableProps {
