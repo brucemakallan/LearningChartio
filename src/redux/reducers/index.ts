@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
 import loaderReducer from './loaderReducer';
 import articlesReducer from './articlesReducer';
+import { Articles } from '../../utils/interfaces';
 
-export interface reduxState {
+export interface ReduxState {
   loaderReducer: {
-    showLoader: boolean
+    showLoader: boolean;
   };
   articlesReducer: {
-    articles: []
+    articles: Articles;
   };
 }
 

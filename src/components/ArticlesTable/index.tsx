@@ -2,13 +2,17 @@ import * as React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
+import { ReduxState } from '../../redux/reducers';
+import { ArticleState } from '../../redux/reducers/articlesReducer';
+import { connect } from 'react-redux';
 
-// export interface ArticlesTableProps {
 
-// }
+export interface ArticlesTableProps {
+  articles: any;
+}
 
 
-class ArticlesTable extends React.Component {
+class ArticlesTable extends React.Component<ArticlesTableProps, {}> {
   state = {
     columnDefs: [
       { headerName: 'Article', field: 'article', sortable: true, filter: true },
@@ -23,6 +27,18 @@ class ArticlesTable extends React.Component {
   }
 
   render(): JSX.Element {
+    const { articles } = this.props;
+    const rowData = articles.map((row: Array<string>) => ({
+      article: row[0],
+      date: row[1],
+      author: row[2],
+      readers: row[3],
+      likes: row[4],
+      dislikes: row[5],
+      comments: row[6],
+    }));
+    console.log(rowData);
+
     return (
       <div
         className="ag-theme-material"
@@ -30,13 +46,16 @@ class ArticlesTable extends React.Component {
           height: '500px',
           width: '600px' }}
       >
-        <AgGridReact
+        {rowData.length > 0 && <AgGridReact
           columnDefs={this.state.columnDefs}
-          rowData={this.state.rowData}>
-        </AgGridReact>
+          rowData={rowData}>
+        </AgGridReact>}
       </div>
     );
   }
 }
 
-export default ArticlesTable;
+const mapStateToProps = ({ articlesReducer }: ReduxState): ArticleState => ({
+  articles: articlesReducer.articles,
+});
+export default connect(mapStateToProps, {})(ArticlesTable);

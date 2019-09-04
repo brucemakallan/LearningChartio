@@ -5,7 +5,7 @@ import readGoogleSheet from '../GoogleSheets';
 import ArticlesTable from '../ArticlesTable';
 import Loader from '../Loader';
 import { connect } from 'react-redux';
-import { reduxState } from '../../redux/reducers';
+import { ReduxState } from '../../redux/reducers';
 import { SpreadsheetTable } from '../../utils/interfaces';
 import { ArticleState } from '../../redux/reducers/articlesReducer';
 
@@ -19,7 +19,7 @@ class App extends React.Component<AppProps> {
     const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID || '';
     const token = process.env.REACT_APP_GOOGLE_TOKEN || '';
     const table = {
-      startCell: 'A1',
+      startCell: 'A2',
       endCell: 'G27',
     };
     getAllArticles(sheetId, token, table);
@@ -38,7 +38,7 @@ class App extends React.Component<AppProps> {
   }
 }
 
-const mapStateToProps = ({ articlesReducer }: reduxState): ArticleState => ({
+const mapStateToProps = ({ articlesReducer }: ReduxState): ArticleState => ({
   articles: articlesReducer.articles,
 });
 const mapDispatchToProps = {

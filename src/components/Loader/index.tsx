@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { reduxState } from '../../redux/reducers';
+import { ReduxState } from '../../redux/reducers';
 import './Loader.scss';
 import { LoaderState } from '../../redux/reducers/loaderReducer';
 
@@ -20,7 +20,7 @@ class Loader extends React.Component<LoaderProps> {
   }
 }
 
-const mapStateToProps = ({ loaderReducer }: reduxState): LoaderState => ({
+const mapStateToProps = ({ loaderReducer }: ReduxState): LoaderState => ({
   showLoader: loaderReducer.showLoader,
 });
 export default connect(mapStateToProps)(Loader);
