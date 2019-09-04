@@ -15,6 +15,10 @@ export interface AppProps {
 }
 
 class App extends React.Component<AppProps> {
+  componentDidMount = (): void => {
+    this.getArticles();
+  }
+
   getArticles = (): void => {
     const { getAllArticles } = this.props;
     const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID || '';
