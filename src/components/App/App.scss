@@ -12,3 +12,17 @@
     margin: 40px 0;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .app {
+    padding: 20px;
+
+    .refresh-bt {
+      justify-content: center;
+    }
+    .cards {
+      flex-flow: column;
+      align-items: center;
+    }
+  }
+}

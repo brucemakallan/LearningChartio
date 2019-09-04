@@ -9,6 +9,7 @@ import { ReduxState } from '../../redux/reducers';
 import { SpreadsheetTable, GlobalState, Articles } from '../../utils/interfaces';
 import { sumColumn } from '../../utils/articles';
 import ValueCard from '../ValueCard';
+import { colors } from '../../utils/colors';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: SpreadsheetTable) => void;
@@ -36,16 +37,17 @@ class App extends React.Component<AppProps> {
   render(): JSX.Element {
     const { showLoader, articles } = this.props;
     const cards = [
-      { index: 3, title: 'Readers' },
-      { index: 4, title: 'Likes' },
-      { index: 5, title: 'Dislikes' },
-      { index: 6, title: 'Comments' },
+      { index: 3, title: 'Readers', color: colors.blue },
+      { index: 4, title: 'Likes', color: colors.orange },
+      { index: 5, title: 'Dislikes', color: colors.pink },
+      { index: 6, title: 'Comments', color: colors.teal },
     ];
 
     return (
       <div className="app">
         <ToastContainer />
         <Loader showLoader={showLoader} />
+        <h1 className="text-center">Authors Haven Statistics Dashboard</h1>
         <div className="refresh-bt">
           <button type="button" className="btn btn-sm btn-outline-primary" onClick={this.getArticles}>
             Refresh from Google Sheet
@@ -55,7 +57,12 @@ class App extends React.Component<AppProps> {
           {
             cards.map(
               (card, index) =>
-                <ValueCard key={index} value={sumColumn(articles, card.index)} title={card.title} />
+                <ValueCard
+                  key={index}
+                  value={sumColumn(articles, card.index).toLocaleString()}
+                  title={card.title}
+                  color={card.color}
+                />
             )
           }
         </div>
