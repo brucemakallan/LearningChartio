@@ -10,6 +10,7 @@ import { SpreadsheetTable, GlobalState, Articles } from '../../utils/interfaces'
 import { sumColumn } from '../../utils/articles';
 import ValueCard from '../ValueCard';
 import { colors } from '../../utils/colors';
+import Chart from '../Chart';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: SpreadsheetTable) => void;
@@ -53,20 +54,23 @@ class App extends React.Component<AppProps> {
             Refresh from Google Sheet
           </button>
         </div>
-        <div className="cards">
-          {
-            cards.map(
-              (card, index) =>
-                <ValueCard
-                  key={index}
-                  value={sumColumn(articles, card.index).toLocaleString()}
-                  title={card.title}
-                  color={card.color}
-                />
-            )
-          }
-        </div>
-        <ArticlesTable articles={articles} />
+        {articles.length > 0 && (<div>
+          <div className="cards">
+            {
+              cards.map(
+                (card, index) =>
+                  <ValueCard
+                    key={index}
+                    value={sumColumn(articles, card.index).toLocaleString()}
+                    title={card.title}
+                    color={card.color}
+                  />
+              )
+            }
+          </div>
+          <Chart articles={articles} />
+          <ArticlesTable articles={articles} />
+        </div>)}
       </div>
     );
   }
