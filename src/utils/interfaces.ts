@@ -4,3 +4,8 @@ export interface SpreadsheetTable {
 }
 
 export type Articles = [string[]];
+
+export interface GlobalState {
+  articles: Articles;
+  showLoader: boolean;
+}

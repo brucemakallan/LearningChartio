@@ -6,11 +6,11 @@ import ArticlesTable from '../ArticlesTable';
 import Loader from '../Loader';
 import { connect } from 'react-redux';
 import { ReduxState } from '../../redux/reducers';
-import { SpreadsheetTable } from '../../utils/interfaces';
-import { ArticleState } from '../../redux/reducers/articlesReducer';
+import { SpreadsheetTable, GlobalState } from '../../utils/interfaces';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: SpreadsheetTable) => void;
+  showLoader: boolean;
 }
 
 class App extends React.Component<AppProps> {
@@ -27,10 +27,12 @@ class App extends React.Component<AppProps> {
 
 
   render(): JSX.Element {
+    const { showLoader } = this.props;
+
     return (
       <div className="app">
         <ToastContainer />
-        <Loader />
+        <Loader showLoader={showLoader} />
         <div className="refresh-bt">
           <button type="button" className="btn btn-sm btn-outline-primary" onClick={this.getArticles}>
             Refresh from Google Sheet
@@ -42,8 +44,9 @@ class App extends React.Component<AppProps> {
   }
 }
 
-const mapStateToProps = ({ articlesReducer }: ReduxState): ArticleState => ({
-  articles: articlesReducer.articles,
+const mapStateToProps = (state: ReduxState): GlobalState => ({
+  articles: state.articlesReducer.articles,
+  showLoader: state.loaderReducer.showLoader,
 });
 const mapDispatchToProps = {
   getAllArticles: readGoogleSheet,
