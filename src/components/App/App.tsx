@@ -7,6 +7,7 @@ import Loader from '../Loader';
 import { connect } from 'react-redux';
 import { ReduxState } from '../../redux/reducers';
 import { SpreadsheetTable, GlobalState, Articles } from '../../utils/interfaces';
+import { sumColumn } from '../../utils/articles';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: SpreadsheetTable) => void;
@@ -43,6 +44,10 @@ class App extends React.Component<AppProps> {
             Refresh from Google Sheet
           </button>
         </div>
+        <div>{sumColumn(articles, 3)}</div>
+        <div>{sumColumn(articles, 4)}</div>
+        <div>{sumColumn(articles, 5)}</div>
+        <div>{sumColumn(articles, 6)}</div>
         <ArticlesTable articles={articles} />
       </div>
     );
