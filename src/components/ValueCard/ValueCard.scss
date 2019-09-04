@@ -1,0 +1,33 @@
+$grey: #eaeaea;
+$valueHeight: 75%;
+
+.value-card {
+  border: 1px solid $grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 200px;
+  height: 170px;
+  -webkit-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.29);
+  -moz-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.29);
+  box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.29);
+  background-color: white;
+
+  .value {
+    border-bottom: 1px solid $grey;
+    color: blue;
+    width: 100%;
+    height: $valueHeight;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+  }
+  .title {
+    color: #444444;
+    height: #{100 - $valueHeight};
+    display: flex;
+    align-items: center;
+  }
+}

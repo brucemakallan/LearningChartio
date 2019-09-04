@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { ReduxState } from '../../redux/reducers';
 import { SpreadsheetTable, GlobalState, Articles } from '../../utils/interfaces';
 import { sumColumn } from '../../utils/articles';
+import ValueCard from '../ValueCard';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: SpreadsheetTable) => void;
@@ -34,6 +35,12 @@ class App extends React.Component<AppProps> {
 
   render(): JSX.Element {
     const { showLoader, articles } = this.props;
+    const cards = [
+      { index: 3, title: 'Readers' },
+      { index: 4, title: 'Likes' },
+      { index: 5, title: 'Dislikes' },
+      { index: 6, title: 'Comments' },
+    ];
 
     return (
       <div className="app">
@@ -44,10 +51,14 @@ class App extends React.Component<AppProps> {
             Refresh from Google Sheet
           </button>
         </div>
-        <div>{sumColumn(articles, 3)}</div>
-        <div>{sumColumn(articles, 4)}</div>
-        <div>{sumColumn(articles, 5)}</div>
-        <div>{sumColumn(articles, 6)}</div>
+        <div className="cards">
+          {
+            cards.map(
+              (card, index) =>
+                <ValueCard key={index} value={sumColumn(articles, card.index)} title={card.title} />
+            )
+          }
+        </div>
         <ArticlesTable articles={articles} />
       </div>
     );
