@@ -13,8 +13,8 @@ export interface ArticlesTableProps {
 
 
 class ArticlesTable extends React.Component<ArticlesTableProps, {}> {
-  state = {
-    columnDefs: [
+  render(): JSX.Element {
+    const columns = [
       { headerName: 'Article', field: 'article', sortable: true, filter: true },
       { headerName: 'Date', field: 'date', sortable: true, filter: true },
       { headerName: 'Author', field: 'author', sortable: true, filter: true },
@@ -22,34 +22,21 @@ class ArticlesTable extends React.Component<ArticlesTableProps, {}> {
       { headerName: 'Likes', field: 'likes', sortable: true, filter: true },
       { headerName: 'Dislikes', field: 'dislikes', sortable: true, filter: true },
       { headerName: 'Comments', field: 'comments', sortable: true, filter: true },
-    ],
-    rowData: [],
-  }
-
-  render(): JSX.Element {
+    ];
     const { articles } = this.props;
-    const rowData = articles.map((row: Array<string>) => ({
+    const rows = articles.map((row: Array<string>) => ({
       article: row[0],
       date: row[1],
       author: row[2],
-      readers: row[3],
-      likes: row[4],
-      dislikes: row[5],
-      comments: row[6],
+      readers: parseInt(row[3]),
+      likes: parseInt(row[4]),
+      dislikes: parseInt(row[5]),
+      comments: parseInt(row[6]),
     }));
-    console.log(rowData);
 
     return (
-      <div
-        className="ag-theme-material"
-        style={{
-          height: '500px',
-          width: '600px' }}
-      >
-        {rowData.length > 0 && <AgGridReact
-          columnDefs={this.state.columnDefs}
-          rowData={rowData}>
-        </AgGridReact>}
+      <div className="ag-theme-material" style={{ height: '90vh', width: '98%' }}>
+        { rows.length > 0 &&  <AgGridReact columnDefs={columns} rowData={rows} /> }
       </div>
     );
   }
