@@ -2,7 +2,7 @@
 
 > This React App is loosely based on the Ruby on Rails API here: https://github.com/brucemakallan/Author-s-Haven-in-Ruby-React-AWS
 
-> It is a learning project to practice the ue of Chartio (https://chartio.com) and the Google Sheets API (https://developers.google.com/sheets/api/)
+> It is a learning project to practice the use of Chartio (https://chartio.com) and the Google Sheets API (https://developers.google.com/sheets/api/)
 
 
 ## Authors Haven Blog (Statistics Dashboard)
@@ -14,6 +14,8 @@
 2. Line graph showing trend for Readers, Likes, Dislikes, and Comments
 3. Multilevel Bargraph for the same metrics
 4. Table showing all Article metrics (Reads directly from a Google Sheet)
+
+*Updating the Google Sheet data updates all graphs and tables on the dashboard (including that from Chartio)*
 
 #### Live App on AWS Amplify
 https://develop.d268rw6qrsl4nd.amplifyapp.com
