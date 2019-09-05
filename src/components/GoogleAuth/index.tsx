@@ -15,6 +15,7 @@ const GoogleAuth: React.SFC = () => {
       onSuccess={responseGoogle}
       onFailure={responseGoogle}
       cookiePolicy={'single_host_origin'}
+      scope={'https://www.googleapis.com/auth/spreadsheets.readonly'}
     />
   );
 };
