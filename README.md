@@ -17,3 +17,6 @@
 
 #### Live App on AWS Amplify
 https://develop.d268rw6qrsl4nd.amplifyapp.com
+
+#### Google Sheet data
+[View Shared Google Sheet](https://docs.google.com/spreadsheets/d/1ZuyH1p1T-Qp3Zm8unjj2cCxCEAeldNQYgRbxZXBrROM/edit#gid=0)
