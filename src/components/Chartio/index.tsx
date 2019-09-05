@@ -18,13 +18,15 @@ const Chartio: React.SFC = () => {
   const token = jwt.encode(payload, ORGANIZATION_SECRET, 'HS256');
 
   return (
-    <iframe
-      title="chartio"
-      seamless={true}
-      scrolling={window.innerWidth <= 800 ? 'yes' : 'no'}
-      className="chartio-frame bottom-margin"
-      src={`${BASE_URL}/${token}`}
-    />
+    process.env.REACT_APP_CHARTIO_SECRET
+      ? <iframe
+        title="chartio"
+        seamless={true}
+        scrolling={window.innerWidth <= 800 ? 'yes' : 'no'}
+        className="chartio-frame bottom-margin"
+        src={`${BASE_URL}/${token}`}
+      />
+      : <div />
   );
 };
 
