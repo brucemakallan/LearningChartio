@@ -9,8 +9,11 @@
 
 **NB:** Some features are implemented in both *Chartio* and [Recharts](http://recharts.org/en-US) (React and [D3](https://d3js.org/)). For practice 🙂
 
-**Features / Functions**
+#### Features / Functions
 1. View Sum of `Readers`, `Likes`, `Dislikes`, and `Comments` for a specific period.
 2. Line graph showing trend for Readers, Likes, Dislikes, and Comments
 3. Multilevel Bargraph for the same metrics
 4. Table showing all Article metrics (Reads directly from a Google Sheet)
+
+#### Live App on AWS Amplify
+https://develop.d268rw6qrsl4nd.amplifyapp.com
