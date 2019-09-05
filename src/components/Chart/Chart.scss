@@ -1,0 +1,7 @@
+@import '../../mixins.scss';
+
+.chart {
+  padding: 20px;
+  border: 1px solid #eaeaea;
+  @include light-shaddow;  
+}

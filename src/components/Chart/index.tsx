@@ -33,7 +33,7 @@ const Chart: React.SFC<ChartProps> = ({ articles }: ChartProps) => {
   });
 
   return (
-    <div className="chart bottom-padding">
+    <div className="chart bottom-margin">
       <ResponsiveContainer width="100%" aspect={2.1}>
         <LineChart data={data}>
           <XAxis dataKey="date" />

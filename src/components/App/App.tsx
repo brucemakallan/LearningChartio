@@ -11,6 +11,7 @@ import { sumColumn } from '../../utils/articles';
 import ValueCard from '../ValueCard';
 import { colors } from '../../utils/colors';
 import Chart from '../Chart';
+import Chartio from '../Chartio';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: SpreadsheetTable) => void;
@@ -55,7 +56,7 @@ class App extends React.Component<AppProps> {
           </button>
         </div>
         {articles.length > 0 && (<div>
-          <div className="cards">
+          <div className="cards bottom-margin">
             {
               cards.map(
                 (card, index) =>
@@ -69,6 +70,7 @@ class App extends React.Component<AppProps> {
             }
           </div>
           <Chart articles={articles} />
+          <Chartio />
           <ArticlesTable articles={articles} />
         </div>)}
       </div>

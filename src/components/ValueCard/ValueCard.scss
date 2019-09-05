@@ -1,3 +1,5 @@
+@import '../../mixins.scss';
+
 $grey: #eaeaea;
 $valueHeight: 75%;
 
@@ -8,10 +10,8 @@ $valueHeight: 75%;
   align-items: center;
   width: 200px;
   height: 170px;
-  -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.26);
-  -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.26);
-  box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.26);
   background-color: white;
+  @include light-shaddow;
 
   .value {
     border-bottom: 1px solid $grey;
