@@ -1,11 +1,17 @@
 import * as React from 'react';
 import { GoogleLogin } from 'react-google-login';
 
-const GoogleAuth: React.SFC = () => {
+interface GoogleAuthProps {
+  history: {
+    push: Function;
+  };
+};
+
+const GoogleAuth: React.SFC<GoogleAuthProps> = ({ history }: GoogleAuthProps) => {
   const responseGoogle = (response: any): void => {
     if (response && response.tokenObj && response.tokenObj.access_token) {
       localStorage.setItem('token', response.tokenObj.access_token);
-      // go to dashboard
+      history.push('/dashboard/');
     }
   };
 

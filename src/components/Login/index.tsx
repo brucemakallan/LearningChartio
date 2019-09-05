@@ -1,10 +1,17 @@
 import * as React from 'react';
 import GoogleAuth from '../GoogleAuth';
+import './Login.scss';
 
-const Login: React.SFC = () => {
+interface LoginProps {
+  history: {
+    push: Function;
+  };
+}
+
+const Login: React.SFC<LoginProps> = ({ history }: LoginProps) => {
   return (
     <div className="login-page">
-      <GoogleAuth />
+      <GoogleAuth history={history} />
     </div>
   );
 };
