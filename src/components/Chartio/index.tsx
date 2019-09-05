@@ -18,7 +18,7 @@ const Chartio: React.SFC = () => {
   const token = jwt.encode(payload, ORGANIZATION_SECRET, 'HS256');
 
   return (
-    <iframe className="chartio-frame bottom-margin" src={`${BASE_URL}/${token}`}></iframe>
+    <iframe title="chartio" className="chartio-frame bottom-margin" src={`${BASE_URL}/${token}`}></iframe>
   );
 };
 
