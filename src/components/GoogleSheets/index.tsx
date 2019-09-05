@@ -9,9 +9,9 @@ const readGoogleSheet = (
   return axios.get(
     `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${table.startCell}:${table.endCell}`,
     {
-      headers:{
+      headers: {
         Authorization: `Bearer ${token}`,
-        'content-type':'application/json',
+        'content-type': 'application/json',
       },
     })
     .then((response) => {

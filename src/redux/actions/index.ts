@@ -7,24 +7,29 @@ const types = {
   SHOW_PAGE_LOADER: 'SHOW_PAGE_LOADER',
 };
 
-export const showError = (payload?: string) => ({
+interface Action {
+  type: string;
+  payload: any;
+};
+
+export const showError = (payload?: string): Action => ({
   type: types.ERROR,
   payload: payload || messages.NETWORK_ERROR,
 });
 
-export const showSuccess = (payload: string) => ({
+export const showSuccess = (payload: string): Action => ({
   type: types.SUCCESS,
   payload: payload || messages.SUCCESS,
 });
 
-export const showPageLoader = (payload: boolean) => ({
+export const showPageLoader = (payload: boolean): Action => ({
   type: types.SHOW_PAGE_LOADER,
   payload,
 });
 
-export const handleException = (error: any, dispatch: any) => {
+export const handleException = (error: any, dispatch: any): void => {
   if (error && error.response && error.response.data
-      && error.response.data.error && error.response.data.error.message) {
+    && error.response.data.error && error.response.data.error.message) {
     error.response.data.error.status === messages.UNAUTHENTICATED
       ? dispatch(showError(messages.ACCESS_DENIED))
       : dispatch(showError(error.response.data.error.message));

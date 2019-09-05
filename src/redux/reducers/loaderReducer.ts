@@ -23,6 +23,9 @@ const loaderReducer = (state = initialState, action: ReduxAction): LoaderState =
     return { ...state, showLoader: payload };
   case types.ERROR:
     toast.error(payload);
+    setTimeout(() => {
+      window.location.replace('/');
+    }, 3000);
     return state;
   default: return state;
   }
