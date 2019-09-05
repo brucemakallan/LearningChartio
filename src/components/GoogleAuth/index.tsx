@@ -5,6 +5,7 @@ const GoogleAuth: React.SFC = () => {
   const responseGoogle = (response: any): void => {
     if (response && response.tokenObj && response.tokenObj.access_token) {
       localStorage.setItem('token', response.tokenObj.access_token);
+      // go to dashboard
     }
   };
 

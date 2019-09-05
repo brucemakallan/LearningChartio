@@ -12,7 +12,6 @@ import ValueCard from '../ValueCard';
 import { colors } from '../../utils/colors';
 import Chart from '../Chart';
 import Chartio from '../Chartio';
-import GoogleAuth from '../GoogleAuth';
 
 export interface AppProps {
   getAllArticles: (sheetId: string, token: string, table: SpreadsheetTable) => void;
@@ -50,7 +49,6 @@ class App extends React.Component<AppProps> {
       <div className="app">
         <ToastContainer />
         <Loader showLoader={showLoader} />
-        <GoogleAuth />
         <h1 className="text-center">Authors Haven Statistics Dashboard</h1>
         <div className="refresh-bt">
           <button type="button" className="btn btn-sm btn-outline-primary" onClick={this.getArticles}>
